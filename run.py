@@ -4,21 +4,21 @@ import random
 import schedule
 import time
 
+ran = 0
+
 def action():
+    global ran
     os.system("./chure.sh")
+    ran += 1
 
 def random_time():
-    """Generate a random time string in HH:MM format."""
-    hour = random.randint(16, 23)  # Random hour between 0 and 23
-    minute = random.randint(0, 59)  # Random minute between 0 and 59
-
-    hour = 16
-    minute = 5
+    hour = random.randint(16, 23) 
+    minute = random.randint(0, 59)  
 
     return f"{hour:02}:{minute:02}"
 
 def schedule_shit(freq):
-    schedule.clear()  # Clear existing scheduled jobs before adding new ones
+    schedule.clear()  
     for _ in range(freq):
         time_str = random_time()
         print(f"Scheduled for {time_str}")
@@ -27,8 +27,7 @@ def schedule_shit(freq):
 if __name__ == "__main__":
     while True:
         num_freq = random.randint(1, 4)
-        num_freq = 1
-        
+
         schedule_shit(num_freq)
         print(f"Scheduled {num_freq} tasks for today.")
 
@@ -36,3 +35,11 @@ if __name__ == "__main__":
         while True:
             schedule.run_pending()
             time.sleep(60)
+            #print(ran)
+            #print(len(schedule.jobs))
+            if ran == num_freq:
+                break
+        
+        print("Done")
+        schedule.clear()
+        print(len(schedule.jobs))

@@ -12,7 +12,7 @@ def action():
     ran += 1
 
 def random_time():
-    hour = random.randint(16, 23) 
+    hour = random.randint(0, 23) 
     minute = random.randint(0, 59)  
 
     return f"{hour:02}:{minute:02}"
@@ -26,7 +26,7 @@ def schedule_shit(freq):
 
 if __name__ == "__main__":
     while True:
-        num_freq = random.randint(1, 4)
+        num_freq = random.randint(2, 4)
 
         schedule_shit(num_freq)
         print(f"Scheduled {num_freq} tasks for today.")

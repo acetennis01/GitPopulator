@@ -26,7 +26,7 @@ def schedule_shit(freq):
 
 if __name__ == "__main__":
     while True:
-        num_freq = random.randint(2, 4)
+        num_freq = random.randint(1, 4)
 
         schedule_shit(num_freq)
         print(f"Scheduled {num_freq} tasks for today.")
